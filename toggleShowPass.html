@@ -1,0 +1,40 @@
+<p>
+    Password:
+    <input type="password" id="password" onkeyup="filter(this)">
+    <!-- <input id="toggle-pass" type="button" onclick="toggleShow()" value="Show Password"> -->
+    <button id="toggle-pass" onclick="toggleShow()">Show Password</button>
+    <!-- <input id="toggle-pass" type="button" onclick="toggleShow()" value="Show Password"> -->
+    <!-- <a href="https://www.w3schools.com">Click here to go to w3schools.com</a> -->
+    <textarea id="user_post"></textarea>
+</p>
+
+<script>
+    window.onbeforeunload = function () {
+        var ta = document.getElementById("user_post");
+        if (ta.value != "") {
+            return "You have unsaved work!";
+        }
+    }
+    function toggleShow() {
+        let passInput = document.querySelector('#password');
+        let btnToggle = document.querySelector('#toggle-pass');
+        console.log(passInput.type);
+
+        if (passInput.type === 'password') {
+            passInput.type = 'text';
+            // btnToggle.value = 'Hide Password';
+            btnToggle.innerHTML = 'Hide Password';
+            // console.log(btnToggle.value)
+        }
+        else {
+            passInput.type = 'password';
+            // btnToggle.value = 'Show Password';
+            btnToggle.innerHTML = 'Show Password';
+        }
+    }
+    let filter = (input) => {
+        let reg = /[^a-z]/gi;
+        input.value = input.value.replace(reg, '');
+    }
+
+</script>

@@ -1,0 +1,27 @@
+<style>
+    #box1 {
+        position: fixed;
+        background-color: antiquewhite;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+<h1>Page Content</h1>
+<div id="box1">
+    Pop out Box
+</div>
+<button onclick="document.getElementById('box1').style.display='block'">Pop-out Box</button>
+<script>
+    window.addEventListener('mouseup', (event) => {
+
+        let box = document.getElementById('box1');
+        if (box && event.target != box && event.target.parentNode != box) {
+            box.style.display = 'none'
+        }
+    })
+</script>

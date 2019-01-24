@@ -1,0 +1,56 @@
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        opacity: 0.8;
+        z-index: 10;
+        display: none;
+        background-color: black;
+    }
+
+    #alert {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 10;
+        display: none;
+    }
+</style>
+
+<div id="overlay"></div>
+<div id="alert">
+    <div id="header">Acknowledge This Message</div>
+    <div id="body"></div>
+    <div id="footer">
+        <button onclick="alertXYZ.ok()">OK</button>
+    </div>
+</div>
+<button onclick="alert('default alert')">Default alert</button>
+<button onclick="alertXYZ.render('custom alert')">Custom alert</button>
+<input type="text">
+
+<script>
+    function AlertXYZ() {
+        this.render = (message) => {
+            let overlay = document.querySelector('#overlay');
+            let alert = document.querySelector('#alert');
+            let body = document.querySelector('#body');
+
+            body.innerHTML = message;
+            overlay.style.display = 'block';
+            alert.style.display = 'block';
+        }
+        this.ok = () => {
+            let overlay = document.querySelector('#overlay');
+            let alert = document.querySelector('#alert');
+
+            overlay.style.display = 'none';
+            alert.style.display = 'none';
+        }
+    }
+    let alertXYZ = new AlertXYZ();
+</script>

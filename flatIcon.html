@@ -1,0 +1,32 @@
+<style>
+    #icons>div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #icons>div>b {
+        display: block;
+    }
+
+    #icons {
+        display: flex;
+        flex-wrap: wrap;
+        flex: auto;
+    }
+</style>
+
+<div id="icons">
+    <script>
+        for (let i = 9000; i < 10175; i++) {
+            document.write('<div>');
+            document.write('&amp;#' + i + ';');
+            document.write('<b>&#' + i + ';</b>');
+            document.write('</div>');
+        }
+    </script>
+</div>

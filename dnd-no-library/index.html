@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Drag and Drop No Library</title>
+</head>
+
+<body>
+    <h2 id="status">App status...</h2>
+    <h1>Drop Zone</h1>
+    <div id="drop_zone" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)"
+        ">
+    </div>
+    <div id="object">
+        <div id="obj1" class="obj" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">Object
+            1</div>
+        <div id="obj2" class="obj" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">Object
+            2</div>
+        <div id="obj3" class="obj" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">Object
+            3</div>
+    </div>
+
+    <hr>
+    <button id="" onclick="readDropZone()">Get Object Data</button>
+
+    <script src="custom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rich Text Editor</title>
+</head>
+
+<body onLoad="richEditorOn()">
+    <form action="" onSubmit="iSubmit(event)" id="form">
+        <div>
+            <p>Entry Title:</p>
+            <input type="text" id="title">
+        </div>
+        <div>
+            <p>Entry Body:</p>
+            <div>
+                <button onclick="iBold(event)" class="btn-control">B</button>
+                <button onclick="iUnderline(event)" class="btn-control">U</button>
+                <button onclick="iItalic(event)" class="btn-control">I</button>
+                <button onclick="iFontSize(event)" class="btn-control">Text Size</button>
+                <button onclick="iForeColor(event)" class="btn-control">Text Color</button>
+                <button onclick="iHorizontalRule(event)" class="btn-control">HR</button>
+                <button onclick="iUnorderedList(event)" class="btn-control">UL</button>
+                <button onclick="iOrderedList(event)" class="btn-control">OL</button>
+                <button onclick="iLink(event)" class="btn-control">Link</button>
+                <button onclick="iUnLink(event)" class="btn-control">UnLink</button>
+                <button onclick="iImage(event)" class="btn-control">Image</button>
+            </div>
+            <textarea style="display:none;" name="myTextArea" id="myTextArea" cols="100" rows="14"></textarea>
+            <iframe name="richTextField" id="richTextField" style="border:#000000 1px solid; width:700px; height:300px;"></iframe>
+        </div>
+        <button type="submit">Submit</button>
+
+    </form>
+    <div contenteditable="true" onclick="document.execCommand('selectAll')">
+        <p>Select All</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum similique perspiciatis nesciunt ab nulla magni
+            nobis sapiente omnis id, animi officiis iure obcaecati, quidem voluptatibus magnam doloremque repellendus
+            voluptate blanditiis!</p>
+    </div>
+    <script>
+        let richEditorOn = () => {
+            richTextField.document.designMode = "on";
+        }
+        let iBold = (event) => {
+            event.preventDefault()
+            richTextField.document.execCommand('bold');
+        }
+        let iUnderline = (event) => {
+            event.preventDefault()
+            richTextField.document.execCommand('underline', false, null);
+        }
+        let iItalic = (event) => {
+            event.preventDefault()
+            richTextField.document.execCommand('italic', false, null);
+        }
+        let iFontSize = (event) => {
+            event.preventDefault()
+            let size = prompt('Enter a size', '');
+            richTextField.document.execCommand('FontSize', false, size);
+        }
+        let iForeColor = (event) => {
+            event.preventDefault()
+            let color = prompt('Define a basic color or apply a hexadecimal color code', '');
+            richTextField.document.execCommand('ForeColor', false, color);
+        }
+        let iHorizontalRule = (event) => {
+            event.preventDefault()
+            richTextField.document.execCommand('inserthorizontalrule', false, null);
+        }
+        let iUnorderedList = (event) => {
+            event.preventDefault()
+            richTextField.document.execCommand('InsertOrderedList', false, null);
+        }
+        let iOrderedList = (event) => {
+            event.preventDefault()
+            richTextField.document.execCommand('InsertUnorderedList', false, null);
+        }
+        let iLink = (event) => {
+            event.preventDefault()
+            let linkURL = prompt('Enter the URL for this link: ', 'http://')
+            richTextField.document.execCommand('CreateLink', false, null);
+        }
+        let iUnLink = (event) => {
+            event.preventDefault()
+            richTextField.document.execCommand('UnLink', false, null);
+        }
+        let iImage = (event) => {
+            event.preventDefault()
+            let imgSource = prompt('Enter image location', '');
+            if (imgSource !== null) {
+                richTextField.document.execCommand('insertimage', false, imgSource);
+            }
+        }
+        let iSubmit = (event) => {
+            event.preventDefault();
+            let theForm = document.querySelector("#form");
+            theForm.elements['myTextArea'].value = window.frames['richTextField'].document.body.innerHTML;
+            console.log(theForm.elements['myTextArea'].value);
+        }
+    </script>
+</body>
+
+</html>

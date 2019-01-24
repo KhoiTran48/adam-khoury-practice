@@ -1,0 +1,44 @@
+<div id="container">
+    <div id="progress"></div>
+    <div id="percent"></div>
+</div>
+
+<style>
+    #container {
+        width: 300px;
+        height: 30px;
+        background-color: red;
+        position: relative;
+    }
+
+    #progress {
+        position: absolute;
+        /* width: 50%; */
+        height: 100%;
+        background-color: blue;
+        top: 0;
+        left: 0;
+        transition: 1s linear;
+    }
+
+    #percent {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+</style>
+<script>
+    let progress = document.querySelector('#progress');
+    let percent = document.querySelector('#percent');
+
+    function randomPercent() {
+        let value = Math.floor(Math.random() * 100);
+        console.log(value);
+        progress.style.width = value + '%';
+        percent.innerHTML = value + '%';
+    }
+
+    setInterval(randomPercent, 1200);
+
+</script>

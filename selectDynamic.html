@@ -1,0 +1,34 @@
+<select name="" id="slt1" onchange="populate(this.id, 'slt2')">
+    <option value=""></option>
+    <option value="honda">Honda</option>
+    <option value="yamaha">Yamaha</option>
+    <option value="toyota">Toyota</option>
+</select>
+<select name="" id="slt2"></select>
+<script>
+    const honda = ['|', 'wave|Wave RS', 'sh|SH', 'vision|Vision'];
+    const yamaha = ['|', 'sirius|Sirius', 'exciter|Exciter'];
+    const toyota = ['|', 'inova|Inova', 'yaris|Yaris'];
+    let populate = (id1, id2) => {
+        let s1 = document.querySelector('#' + id1);
+        let s2 = document.querySelector('#' + id2);
+        let optionArray = [];
+        s2.innerHTML = '';
+        if (s1.value === 'honda') {
+            optionArray = honda;
+        }
+        if (s1.value === 'yamaha') {
+            optionArray = yamaha;
+        }
+        if (s1.value === 'toyota') {
+            optionArray = toyota;
+        }
+        optionArray.forEach((item) => {
+            let pair = item.split('|');
+            let newOption = document.createElement('option');
+            newOption.value = pair[0];
+            newOption.innerHTML = pair[1];
+            s2.options.add(newOption);
+        })
+    }
+</script>

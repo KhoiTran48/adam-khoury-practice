@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API JSON</title>
+</head>
+
+<body>
+    <div id="result"></div>
+    <button onclick="ajax_get_json()">Get Data</button>
+    <script>
+        function ajax_get_json() {
+            console.log('hihi')
+            var hr = new XMLHttpRequest();
+            var result = document.getElementById('result');
+            hr.open("GET", 'http://5bf7850c5cd318001379289a.mockapi.io/task-list', true);
+            hr.setRequestHeader("Content-type", "application/json", true);
+            hr.onreadystatechange = function () {
+                if (hr.readyState === 4 && hr.status === 200) {
+                    var data = JSON.parse(hr.responseText);
+                    console.log(data)
+                    if (Array.isArray(data)) {
+                        data.forEach((item) => {
+                            let newEl = document.createElement('div');
+                            newEl.innerHTML = `ID: ${item.id},
+                                                Name: ${item.name},
+                                                Status: ${item.status}`;
+                            result.appendChild(newEl);
+                        })
+                    }
+                }
+            }
+            hr.send(null);
+            result.innerHTML = "requesting ...";
+        }   
+    </script>
+</body>
+
+</html>

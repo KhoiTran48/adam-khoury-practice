@@ -1,0 +1,14 @@
+<input type="checkbox" class="master" onchange="toggle(this, '.groupCB')">master
+<br>
+<input type="checkbox" class="groupCB">Checkbox1
+<input type="checkbox" class="groupCB">Checkbox2
+<input type="checkbox" class="groupCB">Checkbox3
+
+<script>
+    function toggle(master, classNameGroup) {
+        let arrCB = document.querySelectorAll(classNameGroup);
+        arrCB.forEach((item) => {
+            item.checked = master.checked;
+        })
+    }
+</script>

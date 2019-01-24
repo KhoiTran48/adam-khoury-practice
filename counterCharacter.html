@@ -1,0 +1,17 @@
+<textarea name="" id="content" cols="30" rows="10" width=200px onkeyup="counter()"></textarea>
+<input type="text" readonly value=250 id="count">
+<script>
+    let maxCharacter = 250;
+    let counter = () => {
+        let content = document.querySelector('#content').value;
+        let numberCharacter = document.querySelector('#count').value;
+
+        if (content.length >= maxCharacter) {
+            document.querySelector('#content').disabled = true;
+            document.querySelector('#count').value = 0;
+        } else {
+            document.querySelector('#count').value = maxCharacter - content.length;
+        }
+
+    }
+</script>

@@ -1,0 +1,20 @@
+<h2>
+    This is the web page
+</h2>
+<div onclick="makeEditable(this)" onblur="makeReadOnly(this)">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam id sequi itaque odit laborum dolor ad quos
+    cupiditate nemo voluptate magnam iure aut incidunt magni, porro nisi tempore fugiat culpa!
+</div>
+
+<script>
+    function makeEditable(ele) {
+        ele.style.border = "1px solid black";
+        ele.style.padding = "20px";
+        ele.contentEditable = true;
+    }
+    function makeReadOnly(ele) {
+        ele.style.border = "none";
+        ele.style.padding = "0px";
+        ele.contentEditable = false;
+    }
+</script>

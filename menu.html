@@ -1,0 +1,62 @@
+<style>
+    #menu {
+        position: fixed;
+        width: 150px;
+        height: 150px;
+        background-color: wheat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.5s linear;
+    }
+
+    .item {
+        width: 80%;
+        height: 80%;
+        background-color: yellowgreen;
+        margin: 10px;
+    }
+
+    #menu:hover {
+        border: 1px solid red;
+
+    }
+
+    #menu:hover .item {
+        background-color: red;
+    }
+
+    #panel {
+        width: 200px;
+        height: 200px;
+        background-color: antiquewhite;
+        position: fixed;
+        opacity: 0;
+    }
+
+    @keyframes rightToLeft {
+        0% {
+            margin:
+        }
+    }
+</style>
+
+
+<div id="menu">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+<div id="panel">
+
+</div>
+<div id="content">
+    <script>
+        for (let i = 0; i < 40; i++) {
+            document.write(
+                `<h1>Document content</h1>`
+            )
+        }
+    </script>
+</div>

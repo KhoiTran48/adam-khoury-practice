@@ -1,0 +1,9 @@
+<input type="text" onkeyup="restrictInput(this)" placeholder="First Name">
+<input type="text" onkeyup="restrictInput(this)" placeholder="Last Name">
+
+<script>
+    function restrictInput(input) {
+        let reg = /[^a-z]/gi;
+        input.value = input.value.replace(reg, '');
+    }
+</script>
