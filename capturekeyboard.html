@@ -1,0 +1,11 @@
+<div id="key_press"></div>
+<div id="key_code"></div>
+<script>
+    window.addEventListener('keydown', (event) => {
+        let keyPress = document.getElementById('key_press');
+        let keyCode = document.getElementById('key_code');
+
+        keyPress.innerHTML = String.fromCharCode(event.keyCode);
+        keyCode.innerHTML = event.keyCode;
+    })
+</script>

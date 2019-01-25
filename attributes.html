@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        .someStyle{background:#FC0; padding:24px; font-size:24px;}
+</style>
+    <script>
+        function applyAttributes() {
+            document.getElementById("e1").setAttribute("align", "center");
+            document.getElementById("e2").setAttribute("class", "someStyle");
+            document.getElementById("e3").setAttribute("title", "Navigate to my site");
+        }
+        window.onload = applyAttributes;
+        function applyAtt(target, att, attVal) {
+            document.getElementById(target).setAttribute(att, attVal);
+        }
+        function removeAtt(target, att) {
+            document.getElementById(target).removeAttribute(att);
+        }
+    </script>
+</head>
+
+<body>
+    <h2 id="myHeading">The sky is blue and that is good.</h2>
+    <input type="button" onClick="applyAtt('myHeading','title','Adam wrote this')" value="Click to add title attribute" />
+    <input type="button" onClick="removeAtt('myHeading','title')" value="Click to remove title attribute" />
+    <h2 id="e1">The sky is blue and that is good.</h2>
+    <p id="e2">I cut three stacks of firewood today.</p>
+    <a id="e3" href="http://www.developphp.com">Click my link</a>
+</body>
+
+</html>
