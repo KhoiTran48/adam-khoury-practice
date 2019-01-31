@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scroll Bottom</title>
+    <style>
+        #peekaboo {
+            position: fixed;
+            bottom: 0;
+            right: -50%;
+            background-color: aqua;
+            padding: 25px;
+            width: 300px;
+            height: 200px;
+            font-size: 48px;
+        }
+
+        #prlx_lyr_1 {
+            background-color: aquamarine;
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 200px;
+        }
+
+        div.newData {
+            height: 1000px;
+            background: #09F;
+            margin: 10px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Scroll Bottom Y Handler Function</h2>
+    <p style="height:3000px; font-size: 18px">
+        Scroll to the bottom of the page to see a Peekaboo box effect &daar;
+    </p>
+    <div id="peekaboo"></div>
+    <div id="prlx_lyr_1">
+
+    </div>
+</body>
+<script>
+    let yScrollHandler = () => {
+
+        let prlx_lyr_1 = document.getElementById('prlx_lyr_1');
+        prlx_lyr_1.style.top = -(window.pageYOffset / 10) + 'px';
+
+        let win = document.querySelector('#peekaboo');
+        if ((window.pageYOffset + window.innerHeight) >= document.body.offsetHeight) {
+            win.style.transitionDuration = '1s';
+            win.style.right = '0px';
+            document.body.innerHTML += '<div class="newData"></div>';
+        } else {
+            win.style.transitionDuration = '1s';
+            win.style.right = "-50%";
+        }
+    }
+    let check = () => {
+        console.log('pageYOffset', window.pageYOffset);
+        console.log('innerHeight', window.innerHeight);
+        console.log('offsetHeight', document.body.offsetHeight);
+    }
+
+    window.onscroll = yScrollHandler;
+</script>
+
+</html>

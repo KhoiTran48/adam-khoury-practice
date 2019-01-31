@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scroll Header</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        /* width: 100vw;
+        height: 100vh; */
+    }
+
+    #header {
+        width: 100%;
+        height: 200px;
+        background-color: aqua;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        transition: 0.5s linear;
+        padding-top: 50px;
+    }
+
+    #menu {
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        background-color: aquamarine;
+        bottom: 0;
+        transition: 0.5s linear;
+    }
+</style>
+
+<body>
+    <div id="header">
+        <div id="content">Content</div>
+        <div id="menu">Menu</div>
+    </div>
+
+    <div id="data">
+        <script>
+            for (let i = 0; i < 100; i++) {
+                document.write('<h2>Dummy content ...</h2>');
+            }
+        </script>
+    </div>
+    <script>
+        window.addEventListener('scroll', () => {
+            let header = document.getElementById('header');
+            let menu = document.getElementById('menu');
+            if (window.pageYOffset > 300) {
+                header.style.height = '100px';
+                header.style.paddingTop = '8px';
+                menu.style.display = 'none';
+            } else {
+                header.style.height = '200px';
+                header.style.paddingTop = '50px';
+                menu.style.display = 'block';
+            }
+        })
+    </script>
+</body>
+
+</html>

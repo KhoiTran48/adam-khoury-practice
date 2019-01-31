@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="play-pause-btn">Play</button>
+    <button id="muted">Muted</button>
+
+    Seek <input type="range" name="" id="seek" min="0" max="100" step="1" value="0" required="required" title="">
+    Volume <input type="range" name="" id="volume" min="0" max="100" value="50" step="1" required="required" title="">
+
+    <script>
+        let initAudioPlayer = () => {
+            let audio = new Audio();
+            audio.src = "NoiAyConTimVe.mp3";
+            audio.loop = true;
+
+            let playPauseBtn = document.getElementById('play-pause-btn');
+            let muted = document.getElementById('muted');
+
+            let seek = document.getElementById('seek');
+            let volume = document.getElementById('volume');
+
+            let playPauseHandle = () => {
+                if (audio.paused) {
+                    playPauseBtn.innerHTML = "Pause";
+                    audio.play();
+                } else {
+                    playPauseBtn.innerHTML = "Play";
+                    audio.pause();
+                }
+            }
+            let mutedHandle = () => {
+                if (audio.muted) {
+                    audio.muted = false;
+                    muted.innerHTML = "Muted";
+                } else {
+                    audio.muted = true;
+                    muted.innerHTML = "Unmuted";
+                }
+            }
+
+            let volumeHandle = (event) => {
+                let val = event.target.value;
+                audio.volume = val / 100;
+                audio.muted = false;
+            }
+            let seeking = false;
+            let seekHandle = (event) => {
+                if (seeking) {
+                    let val = event.target.value;
+                    seekTo = audio.duration * (val / 100);
+                    audio.currentTime = seekTo;
+                }
+
+            }
+
+            playPauseBtn.addEventListener('click', playPauseHandle);
+            muted.addEventListener('click', mutedHandle);
+
+            seek.addEventListener('change', seekHandle);
+            seek.addEventListener('mousedown', (event) => {seeking = false;});
+            seek.addEventListener('mouseup', (event) => {seeking = true; seekHandle(event)});
+            // seek.addEventListener('mousemove', seekHandle);
+
+            volume.addEventListener('change', volumeHandle);
+            volume.addEventListener('mousemove', volumeHandle);
+
+        }
+        window.addEventListener('load', initAudioPlayer)
+    </script>
+</body>
+
+</html>
